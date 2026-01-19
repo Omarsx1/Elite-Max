@@ -1,0 +1,44 @@
+---
+import { ClientRouter } from "astro:transitions";
+import "../styles/global.css";
+import BtnWhatsapp from "../components/BtnWhatsapp.astro";
+---
+
+<html lang="es" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="/favicon-black.svg"
+            media="(prefers-color-scheme: light)"
+        />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="/favicon-white.svg"
+            media="(prefers-color-scheme: dark)"
+        />
+        <link
+            rel="apple-touch-icon"
+            href="/apple-touch-icon-black.png"
+            media="(prefers-color-scheme: light)"
+        />
+        <link
+            rel="apple-touch-icon"
+            href="/apple-touch-icon-white.png"
+            media="(prefers-color-scheme: dark)"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Elitemax - Soluciones Corporativas</title>
+        <ClientRouter />
+    </head>
+    <body
+        class="bg-gray-50 text-gray-900 font-sans antialiased selection:bg-green-100 selection:text-green-900"
+    >
+        <slot />
+        <BtnWhatsapp />
+    </body>
+</html>

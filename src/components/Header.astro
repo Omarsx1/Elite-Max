@@ -1,0 +1,155 @@
+---
+import Logo from "./Logo.astro";
+---
+
+<header class="absolute w-full top-0 z-50 bg-transparent">
+    <div class="max-w-[1920px] mx-auto">
+        <div
+            class="flex justify-between items-center h-24 px-4 sm:px-6 lg:px-12"
+        >
+            <!-- Logo Section -->
+            <div class="flex-shrink-0 flex items-center">
+                <a
+                    href="/"
+                    class="flex items-center gap-2"
+                    aria-label="Elitemax Home"
+                >
+                    <Logo class="h-10 w-auto" />
+                    <span class="font-bold text-xl tracking-tight text-black"
+                        >Elitemax</span
+                    >
+                </a>
+            </div>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex space-x-12">
+                <a
+                    href="#services"
+                    class="text-base font-medium text-black hover:text-[#EAB411] transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#EAB411] hover:after:w-full after:transition-all"
+                    >Servicios</a
+                >
+                <a
+                    href="#about"
+                    class="text-base font-medium text-black hover:text-[#EAB411] transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#EAB411] hover:after:w-full after:transition-all"
+                    >Nosotros</a
+                >
+                <a
+                    href="#contact"
+                    class="text-base font-medium text-black hover:text-[#EAB411] transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#EAB411] hover:after:w-full after:transition-all"
+                    >Contacto</a
+                >
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="hidden md:flex items-center">
+                <a
+                    href="#quote"
+                    class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 text-base font-medium rounded-2xl text-black hover:text-[#EAB411] hover:border-[#EAB411] transition-all duration-200"
+                >
+                    Pedir Cotización
+                </a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden flex items-center">
+                <button
+                    id="menu-button"
+                    type="button"
+                    class="text-black hover:text-[#EAB411] focus:outline-none p-2 z-50 transition-colors"
+                    aria-label="Menu"
+                >
+                    <svg
+                        class="h-10 w-10"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            id="menu-icon"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2.5"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Container -->
+    <div
+        id="mobile-menu"
+        class="hidden fixed inset-0 z-40 bg-white/95 backdrop-blur-md flex-col items-center justify-center space-y-8 md:hidden transition-all duration-300 opacity-0 translate-y-[-10px]"
+    >
+        <nav class="flex flex-col items-center space-y-8">
+            <a
+                href="#services"
+                class="mobile-link text-2xl font-bold text-black hover:text-[#EAB411]"
+                >Servicios</a
+            >
+            <a
+                href="#about"
+                class="mobile-link text-2xl font-bold text-black hover:text-[#EAB411]"
+                >Nosotros</a
+            >
+            <a
+                href="#contact"
+                class="mobile-link text-2xl font-bold text-black hover:text-[#EAB411]"
+                >Contacto</a
+            >
+            <a
+                href="#quote"
+                class="mobile-link inline-flex items-center justify-center px-8 py-3 border-2 border-black text-xl font-bold rounded-2xl text-black hover:bg-black hover:text-white transition-all duration-200"
+            >
+                Pedir Cotización
+            </a>
+        </nav>
+    </div>
+</header>
+
+<script>
+    const menuButton = document.getElementById("menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+
+    let isMenuOpen = false;
+
+    function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
+
+        if (isMenuOpen) {
+            mobileMenu?.classList.remove("hidden");
+            mobileMenu?.classList.add("flex");
+            // Force reflow for animation
+            mobileMenu?.offsetHeight;
+            mobileMenu?.classList.remove("opacity-0", "translate-y-[-10px]");
+            mobileMenu?.classList.add("opacity-100", "translate-y-0");
+            // Toggle icon to X
+            menuIcon?.setAttribute("d", "M6 18L18 6M6 6l12 12");
+            document.body.style.overflow = "hidden"; // Prevent scroll
+        } else {
+            mobileMenu?.classList.remove("opacity-100", "translate-y-0");
+            mobileMenu?.classList.add("opacity-0", "translate-y-[-10px]");
+            // Toggle icon to Hamburger
+            menuIcon?.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+            document.body.style.overflow = ""; // Restore scroll
+
+            setTimeout(() => {
+                if (!isMenuOpen) {
+                    mobileMenu?.classList.remove("flex");
+                    mobileMenu?.classList.add("hidden");
+                }
+            }, 300);
+        }
+    }
+
+    menuButton?.addEventListener("click", toggleMenu);
+
+    // Close menu when clicking a link
+    mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            if (isMenuOpen) toggleMenu();
+        });
+    });
+</script>

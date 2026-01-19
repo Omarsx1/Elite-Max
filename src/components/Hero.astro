@@ -1,0 +1,162 @@
+---
+import heroImage from "../assets/himg.webp";
+import audimobImage from "../assets/audimob.webp";
+---
+
+<section
+    class="relative bg-white pt-16 pb-16 lg:pt-0 lg:pb-40 overflow-hidden lg:min-h-[70vh]"
+>
+    <!-- Content Container -->
+    <div
+        class="relative z-20 max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 h-auto lg:h-full flex flex-col lg:flex-row lg:items-center lg:justify-between"
+    >
+        <!-- Text Content Area -->
+        <div
+            class="hero-text-container relative lg:static z-30 w-full sm:w-[85%] lg:w-[65%] xl:w-[60%] pt-2 pb-2 lg:pt-72 lg:pb-32 flex flex-col justify-center"
+        >
+            <h1
+                class="mt-16 sm:mt-12 font-bold tracking-tight text-black text-left lg:text-[4.8rem] lg:leading-[1.1]"
+            >
+                <span
+                    class="block mb-1 text-4xl sm:text-5xl md:text-6xl lg:mb-6"
+                    >Valet Parking de Prestigio</span
+                >
+                <span
+                    class="block text-xl sm:text-5xl md:text-6xl text-[#EAB411]"
+                    >Distinción para su Negocio</span
+                >
+            </h1>
+            <p
+                class="hidden sm:block mt-4 text-sm text-gray-600 sm:mt-12 sm:text-xl max-w-2xl leading-relaxed"
+            >
+                Soluciones de estacionamiento diseñadas para corporativos y
+                servicios de alta gama.
+            </p>
+
+            <!-- Botones y Area de Imagen Mobile -->
+            <div class="relative mt-8 lg:mt-18">
+                <!-- Stacked Buttons -->
+                <div
+                    class="flex flex-col lg:flex-row gap-2 lg:gap-3 z-40 relative w-fit lg:w-full"
+                >
+                    <a
+                        href="#quote"
+                        class="flex items-center justify-center px-4 py-2.5 text-[13px] sm:px-12 sm:py-4 sm:text-xl font-medium rounded-lg text-white bg-[#EAB411] hover:bg-[#d9a60f] hover:scale-105 active:scale-95 transition-all w-[150px] lg:w-auto whitespace-nowrap"
+                    >
+                        Pedir Cotización
+                    </a>
+                    <a
+                        href="#services"
+                        class="flex items-center justify-center px-4 py-2.5 text-[13px] sm:px-12 sm:py-4 sm:text-xl font-medium rounded-lg text-[#000] border border-gray-200 hover:border-[#EAB411] hover:text-[#EAB411] hover:scale-105 active:scale-95 bg-white transition-all w-[150px] lg:w-auto whitespace-nowrap"
+                    >
+                        Más Información
+                    </a>
+                </div>
+
+                <!-- Hero Image Area -->
+                <div class="hero-image-container lg:block pointer-events-none">
+                    <picture>
+                        <source
+                            media="(max-width: 1023px)"
+                            srcset={audimobImage.src}
+                        />
+                        <img
+                            class="w-full h-full object-contain object-right lg:object-top-left"
+                            src={heroImage.src}
+                            alt="Elite Valet Parking"
+                        />
+                    </picture>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero-text-container {
+        transition: all 0.3s ease-out;
+        transform-origin: top left;
+    }
+
+    .hero-image-container {
+        position: absolute;
+        bottom: -48px;
+        right: 0.8rem;
+        width: 225px;
+        z-index: 10;
+        transition: all 0.3s ease-out;
+    }
+
+    @media (min-width: 640px) and (max-width: 1023px) {
+        .hero-image-container {
+            width: 320px;
+            bottom: 2rem;
+            right: 1.5rem;
+        }
+    }
+    @media (min-width: 640px) and (max-width: 1023px) {
+        .hero-image-container {
+            width: 320px;
+            bottom: 2rem;
+            right: 0;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .hero-image-container {
+            position: absolute;
+            top: 220px;
+            right: 3rem;
+            width: 58%;
+            height: 720px;
+            margin: 0;
+            max-width: none;
+            transform-origin: top right;
+            z-index: 10;
+        }
+    }
+
+    /* Scale down proportionally as viewport shrinks */
+    @media (min-width: 1024px) {
+        @media (max-width: 1800px) {
+            .hero-image-container {
+                transform: scale(0.95);
+            }
+            .hero-text-container {
+                transform: scale(0.95);
+            }
+        }
+        @media (max-width: 1600px) {
+            .hero-image-container {
+                transform: scale(0.85);
+            }
+            .hero-text-container {
+                transform: scale(0.85);
+            }
+        }
+        @media (max-width: 1400px) {
+            .hero-image-container {
+                transform: scale(0.75);
+            }
+            .hero-text-container {
+                transform: scale(0.75);
+            }
+        }
+        @media (max-width: 1280px) {
+            .hero-image-container {
+                transform: scale(0.65);
+            }
+            .hero-text-container {
+                transform: scale(0.65);
+            }
+        }
+        @media (max-width: 1100px) {
+            .hero-image-container {
+                transform: scale(0.55);
+            }
+            .hero-text-container {
+                transform: scale(0.55);
+            }
+        }
+    }
+</style>
