@@ -105,13 +105,15 @@ import audimobImage from "../assets/audimob.webp";
     @media (min-width: 1024px) {
         .hero-image-container {
             position: absolute;
-            top: 220px;
-            right: 3rem;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 1.5rem;
             width: 58%;
-            height: 720px;
+            height: auto;
+            aspect-ratio: 16/9;
             margin: 0;
             max-width: none;
-            transform-origin: top right;
+            transform-origin: center right;
             z-index: 10;
         }
     }
